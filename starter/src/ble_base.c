@@ -18,6 +18,7 @@
 #include <bluetooth/services/bas.h>
 
 #include "ble_base.h"
+#include "ble_policy.h"
 
 static bool connect_state = false;
 
@@ -54,13 +55,10 @@ static void connected_cb(struct bt_conn * conn, u8_t err)
 static void disconnected_cb(struct bt_conn * conn, u8_t reason)
 {
     printk("Disconnected: reason %u\n", reason);
-    u8_t payload = 11;
 
     if (default_conn) {
         bt_conn_unref(default_conn);
         default_conn = NULL;
-        
-        ble_enqueue_msg(BLE_EVENT__COMMAND,payload);
     }
     connect_state = false;
 }

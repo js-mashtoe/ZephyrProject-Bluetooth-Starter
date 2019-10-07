@@ -9,6 +9,7 @@
 #include <zephyr.h>
 
 #include "ble_base.h"
+#include "ble_policy.h"
 
 #define LOG_LEVEL 3
 #include <logging/log.h>
@@ -50,25 +51,32 @@ int ble_command(u8_t command)
 
     switch (command) {
 
-        case BLE_CMD__TEST:
-            LOG_INF("%s: TEST", __func__);
-
-            head_test();             // kill watchdog timer
-
+        case BLE_CMD__DISCONNECT:
+            LOG_INF("%s: DISCONNECT", __func__);
             ble_disconnect();        // issue BLE disconnect
-
             ble_start_advertising(); // restart advertising
+            status = 0;
+            break;
 
-            status = 0;        
+        case BLE_CMD__CMD1:
+            LOG_INF("%s: CMD1", __func__);
+            // do something interesting here
+            status = 0;
+            break;
+
+        case BLE_CMD__CMD2:
+            LOG_INF("%s: CMD2", __func__);
+            // do something interesting here
+            status = 0;
             break;
 
         default:
             LOG_INF("%s: <unknown> %d", __func__, command);
-            status = 0;        
+            status = 0;
             break;
     }
 
-    return status:;
+    return status;
 }
 
 /*---------------------------------------------------------------------------*/
