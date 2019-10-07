@@ -1,0 +1,8 @@
+// ble_policy.h
+//
+#ifndef __BLE_POLICY_H__
+#define __BLE_POLICY_H__
+
+int ble_enqueue_msg(ble_event_t, u32_t);
+
+#endif  // __BLE_POLICY_H__
