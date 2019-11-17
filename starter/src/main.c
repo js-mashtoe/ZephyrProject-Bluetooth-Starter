@@ -14,20 +14,20 @@
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
 #if 1
-#include "accelerometer.h"
+#include "accel.h"
 
-void accelerometer_thread(void * id, void * unused1, void * unused2)
+void accel_thread(void * id, void * unused1, void * unused2)
 {
     printk("%s\n", __func__);
 
     k_sleep(DELAY_TIME);
 
     do {
-        accelerometer_init();
+        accel_init();
     } while(0);
 }
 
-K_THREAD_DEFINE(accelerometer_id, STACKSIZE, accelerometer_thread, 
+K_THREAD_DEFINE(accel_id, STACKSIZE, accel_thread, 
                 NULL, NULL, NULL, PRIORITY, 0, K_NO_WAIT);
 #endif
 

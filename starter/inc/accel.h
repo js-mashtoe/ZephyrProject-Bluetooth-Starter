@@ -1,12 +1,16 @@
 /*
- *  accelerometer.h 
+ *  accel.h 
  */
-#ifndef __ACCELEROMETER_H__
-#define __ACCELEROMETER_H__
+#ifndef __ACCEL_H__
+#define __ACCEL_H__
+
+#include <stdio.h>
+#include <drivers/sensor.h>
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-void accelerometer_init(void);
+void accel_init(void);
+void accel_get_vector(struct sensor_value axis[3]);
 
-#endif  /*__ACCELEROMETER_H__ */
+#endif  /*__ACCEL_H__ */
