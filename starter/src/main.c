@@ -8,11 +8,33 @@
 
 #define STACKSIZE 1024
 #define PRIORITY 7
-#define DELAY_TIME   K_MSEC(1000)
+#define DELAY_TIME   K_MSEC(500)
+
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
+#if 1
+#include "accelerometer.h"
+
+void accelerometer_thread(void * id, void * unused1, void * unused2)
+{
+    printk("%s\n", __func__);
+
+    k_sleep(DELAY_TIME);
+
+    do {
+        accelerometer_init();
+    } while(0);
+}
+
+K_THREAD_DEFINE(accelerometer_id, STACKSIZE, accelerometer_thread, 
+                NULL, NULL, NULL, PRIORITY, 0, K_NO_WAIT);
+#endif
 
 /*---------------------------------------------------------------------------*/
 /*  This kicks-off the BLE thread                                            */
 /*---------------------------------------------------------------------------*/
+#if 1
 void bluetooth_thread(void * id, void * unused1, void * unused2)
 {
     printk("%s\n", __func__);
@@ -22,3 +44,4 @@ void bluetooth_thread(void * id, void * unused1, void * unused2)
 
 K_THREAD_DEFINE(bluetooth_id, STACKSIZE, bluetooth_thread, NULL, NULL, NULL,
                 PRIORITY, 0, K_NO_WAIT);
+#endif

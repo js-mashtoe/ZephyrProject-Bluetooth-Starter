@@ -1,1 +1,1 @@
-cmake -B build -DBOARD=nrf52_pca10040 .
+cmake -B build -DBOARD=nrf52832_mdk .
