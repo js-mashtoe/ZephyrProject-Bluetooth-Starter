@@ -1,0 +1,8 @@
+
+
+# alias
+
+export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb
+export GNUARMEMB_TOOLCHAIN_PATH=/Users/jeff/gnuarm
+export BOARD=nrf52840_mdk
+
